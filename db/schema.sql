@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS joysauce_db;
+
+CREATE DATABASE joysauce_db;
