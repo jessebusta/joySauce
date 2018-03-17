@@ -1,11 +1,10 @@
-module.exports = function(sequelize, DataTypes){
-
-  var Interests = sequelize.define("Interests", {
+module.exports =  function (sequelize, DataTypes)  {
+  var Interests = sequelize.define("interests", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    isActive:{
+    isActive: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
@@ -22,13 +21,12 @@ module.exports = function(sequelize, DataTypes){
   };
 
   Interests.associate = function(models) {
-    Interests.hasMany(models.Meetups, {
+    Interests.hasMany(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return;
-
-}
+  return Interests;
+};

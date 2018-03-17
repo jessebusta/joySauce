@@ -28,18 +28,20 @@ module.exports = function (sequelize, DataTypes){
   };
 
   Meetups.associate = function(models) {
+    Meetups.hasMany(models.interests, { as: "names"});
+        // foreignKey: {
+        //   allowNull: false
+        // }
+    // });
+  };
+
+  Meetups.associate = function(models) {
     Meetups.hasOne(models.Roster, {
         onDelete: "cascade"
     });
   };
 
-  Meetups.associate = function(models) {
-    Meetups.belongsToMany(models.Interests, {
-        foreignKey: {
-          allowNull: false
-        }
-    });
-  };
+
 
   return Meetups;
 };
