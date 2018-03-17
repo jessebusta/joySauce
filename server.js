@@ -38,5 +38,3 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-//this is a placeholder comment to see if my understanding of git flow is actually fucking accurate
