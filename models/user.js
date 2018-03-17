@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
       validate:{
         len: [8,100]
       }
-    },
+    }
   });
 
   // user can belong to many meetups as admin or member(roster) and have many Intrests
