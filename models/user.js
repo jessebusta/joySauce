@@ -25,8 +25,18 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   // user can belong to many meetups as admin or member(roster) and have many Intrests
+  // need to research belongsToMany, not using correctly.
   User.associate = function(models) {
-    User.belongsToMany(models.Roster, {
+    User.hasMany(models.Interests, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  // should probably be belongsToMany but cant figure out how to use correctly
+  User.associate = function(models) {
+    User.hasMany(models.Roster, {
       foreignKey: {
         allowNull: false
       }
@@ -34,20 +44,14 @@ module.exports = function(sequelize, DataTypes) {
   };
 
     User.associate = function(models) {
-      User.belongsToMany(models.Meetups, {
+      User.hasMany(models.Meetups, {
         foreignKey: {
           allowNull: false
         }
       });
     };
 
-    User.associate = function(models) {
-      User.belongsToMany(models.Interests, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+
 
   return User;
 //create return function for the export, and separate tables into separate files

@@ -6,19 +6,20 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+
+  Roster.associate = function(models) {
+    Roster.hasMany(models.User, {
+      onDelete: "cascade"
+    })
+  };
+
   Roster.associate = function(models) {
     Roster.belongsTo(models.Meetups, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+      allowNull: false
+    })
+  }
 
-    Roster.hasMany(models.User, {
-        onDelete: "cascade"
-      }
-    });
 
+
+ return Roster;
 };
-
-return Roster;
-}
