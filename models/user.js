@@ -1,29 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        len: [4,20]
-      }
-    },
-    //test email error to build notification to the user that the email is invalid
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        isEmail: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        len: [8,100]
-      }
-    },
-  });
 
+    var User = sequelize.define('User', {
+
+        id: {
+            autoIncrement: true,
+            primaryKey: true,
+            type: DataTypes.INTEGER
+        },
+
+        username: {
+            type: DataTypes.TEXT
+        },
+
+        email: {
+            type: DataTypes.STRING,
+            validate: {
+                isEmail: true
+            }
+        },
+
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+    });
   // user can belong to many meetups as admin or member(roster) and have many Intrests
   // need to research belongsToMany, not using correctly.
   User.associate = function(models) {
