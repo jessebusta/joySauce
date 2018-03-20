@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 //handles environment variables
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars')
+var handlebars = require('express-handlebars');
+var path = require('path');
 
 //For app using BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +19,8 @@ app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
+app.engine("handlebars", exphbs({ defaultLayout: "layouts" }));
+app.set('view engine', 'handlebars');
 
 // For Passport and express session initialization and passport session and added both as middleware.
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
@@ -44,12 +48,20 @@ app.get('/', function(req, res) {
 
 });
 
+app.get('/signup', function(req, res){
+  res.render('signup');
+});
+
+app.get('/createmeet', function(req, res){
+  res.render('createmeet', {user: req.session.isLoggedIn});
+});
+
 //For Handlebars
-app.set('views', './views')
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
+// app.set('views', './views')
+// app.engine('hbs', exphbs({
+//     extname: '.hbs'
+// }));
+// app.set('view engine', '.hbs');
 
 //Routes
 var authRoute = require('./routes/auth.js')(app, passport);
