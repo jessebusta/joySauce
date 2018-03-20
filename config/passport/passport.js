@@ -82,6 +82,7 @@ module.exports = function(passport, user) {
 
                             username: req.body.username,
 
+                            interestId: 0
 
                         };
 

@@ -20,26 +20,13 @@ module.exports = function (sequelize, DataTypes){
     },
   });
 
-  // Meetups can only have one admin, many members(roster), many intrests
   Meetups.associate = function(models) {
-    Meetups.hasOne(models.User, {
-      onDelete: "cascade"
-    });
-  };
+    Meetups.belongsToMany(models.User, {as: "joinedMeetups", through: "myMeetups", foreignKey: "joinedMeetupsID"});
+  }
 
   Meetups.associate = function(models) {
-    Meetups.hasMany(models.interests, { as: "names"});
-        // foreignKey: {
-        //   allowNull: false
-        // }
-    // });
-  };
-
-  Meetups.associate = function(models) {
-    Meetups.hasOne(models.Roster, {
-        onDelete: "cascade"
-    });
-  };
+    Meetups.hasMany(models.interests, {as: "meetupInterests", foreignKey: "meetupInterestsId"})
+  }
 
 
 

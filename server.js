@@ -15,6 +15,8 @@ var exphbs = require('express-handlebars')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(express.static("public"));
+
 
 // For Passport and express session initialization and passport session and added both as middleware.
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
@@ -53,7 +55,11 @@ app.set('view engine', '.hbs');
 var authRoute = require('./routes/auth.js')(app, passport);
 
 //load passport strategies
-require('./config/passport/passport.js')(passport, models.user);
+// console.log('this is a user');
+// console.log(models.User);
+require('./config/passport/passport.js')(passport, models.User);
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
 
 
 app.listen(3000, function(err) {
