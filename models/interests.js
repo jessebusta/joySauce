@@ -1,16 +1,15 @@
 module.exports =  function (sequelize, DataTypes)  {
-  var Interests = sequelize.define("interests", {
+  var Interests = sequelize.define("Interests", {
     id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
     },
-    interests_name: {
+    Interests_name: {
       type: DataTypes.TEXT,
       required: true
     },
-    user_username: {
+    username: {
       type: DataTypes.STRING,
       required: true
     },

@@ -1,10 +1,10 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/user/:id", function(req, res) {
+  app.get("/api/user/:username", function(req, res) {
     db.User.findOne({
       where: {
-        id: req.params.id
+        username: req.params.username
       },
     }).then(function(dbUser){
       res.json(dbUser);
@@ -29,22 +29,30 @@ module.exports = function(app) {
         id: id
       },
       include: [db.Interests]
-    }).then
-  })
-
-  app.post("/api/createdMeetups", function(req, res) {
-    db.Meetups.create(req.body).then(dbMeetup){
-      res.json(dbMeetup);
-    }
-    });
-
-  app.post("/api/newInterest", function(req, res){
-    db.Interests.create(req.body).then(newInterest){
-      res.json(newInterest);
-    }
+    }).then(function(meetupsByInterests){
+      res.json(meetupsByInterests);
+    })
   });
 
-});
+  app.get("/api/allInterests", function(req, res){
+    db.Interests.findAll().then(function(allInterests){
+      res.json(allInterests)
+    });
+  });
+
+  app.post("/api/createdMeetups", function(req, res) {
+    db.Meetups.create(req.body).then(function(dbMeetup){
+      res.json(dbMeetup);
+    })
+  });
+
+  app.post("/api/newInterest", function(req, res){
+    db.Interests.create(req.body).then(function(newInterest){
+      res.json(newInterest);
+    });
+  });
+
+};
 
 
 

@@ -49,12 +49,17 @@ app.get('/', function(req, res) {
 });
 
 app.get('/signup', function(req, res){
-  res.render('signup');
+  res.render('signup',);
 });
 
 app.get('/createmeet', function(req, res){
+  console.log('hi');
   res.render('createmeet', {user: req.session.isLoggedIn});
 });
+
+// app.get('/testhtml', function(req, res){
+//   res.render('testhtml');
+// });
 
 //For Handlebars
 // app.set('views', './views')
@@ -70,8 +75,8 @@ var authRoute = require('./routes/auth.js')(app, passport);
 // console.log('this is a user');
 // console.log(models.User);
 require('./config/passport/passport.js')(passport, models.User);
-// require("./routes/api-routes.js")(app);
-// require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 
 app.listen(3000, function(err) {

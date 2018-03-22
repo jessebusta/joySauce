@@ -1,17 +1,12 @@
 module.exports = function (sequelize, DataTypes){
   var Meetups = sequelize.define("Meetups", {
     id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
-    },
-    interestId: {
-      type: DataTypes.UUID,
-      allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
     },
     user_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     title: {
