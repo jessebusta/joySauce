@@ -1,10 +1,10 @@
 var db = require("../models");
-
+//find user by email, return full info object
 module.exports = function(app) {
-  app.get("/api/user/:username", function(req, res) {
+  app.get("/api/user/:email", function(req, res) {
     db.User.findOne({
       where: {
-        username: req.params.username
+        email: req.params.email
       },
     }).then(function(dbUser){
       res.json(dbUser);
@@ -43,6 +43,7 @@ module.exports = function(app) {
   app.post("/api/createdMeetups", function(req, res) {
     db.Meetups.create(req.body).then(function(dbMeetup){
       res.json(dbMeetup);
+      res.redirect('/dashboard');
     })
   });
 

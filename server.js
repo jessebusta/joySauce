@@ -13,6 +13,7 @@ var exphbs = require('express-handlebars')
 var handlebars = require('express-handlebars');
 var path = require('path');
 
+
 //For app using BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -47,6 +48,7 @@ app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
 
 });
+
 
 app.get('/signup', function(req, res){
   res.render('signup',);

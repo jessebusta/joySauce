@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
     app.get('/logout',authController.logout);
     app.get('/createmeet',isLoggedIn, authController.createmeet);
     app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect: '/dashboard',
+            successRedirect: '/signin',
 
             failureRedirect: '/signin'
         }

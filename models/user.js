@@ -32,5 +32,7 @@ module.exports = function(sequelize, DataTypes) {
 // {as: "createdMeetups", foreignKey: "createdMeetupsId"}
 
   return User;
+
+
 //create return function for the export, and separate tables into separate files
 };

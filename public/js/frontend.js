@@ -1,4 +1,8 @@
+
 console.log('js linked');
+// parsed user object on login
+var userObject = JSON.parse(window.sessionStorage.getItem('data'));
+
 
 // pulls intrests from sql and creates buttons on dashboard page.
 function getInterests() {
@@ -27,21 +31,17 @@ function getInterests() {
 getInterests();
 
 
-// get userName and display on dashboard;
+// display userName and display on dashboard;
 
-function getUserName() {
-  
-  var queryUrl = '/api/user/:username' + userName;
-  $.ajax({
-    url: queryUrl,
-    type: 'GET',
-    success: function(res) {
-      console.log(res);
-    }
-  })
-};
+function displayUserNameDash() {
+  console.log(userObject);
+ $('#userNameDisplay').html("Welcome " + userObject.username);
+}
 
-getUserName();
+displayUserNameDash();
+
+
+
 
 
 // createInterestButtons();

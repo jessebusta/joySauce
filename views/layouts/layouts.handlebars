@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<link rel="stylesheet" href="/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -12,7 +13,7 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             {{#if user}}
-						<p>{{user}}</p>
+						<p>{{username}}</p>
               <li role="presentation"><a href="/dashboard">Dashboard</a></li>
 							  <li role="presentation"><a href="/createmeet">Creat Meetup</a></li>
               <li role="presentation"><a href="/logout">Logout</a></li>
@@ -24,7 +25,7 @@
             {{/if}}
           </ul>
         </nav>
-        <h3 class="text-muted">Joy Sauce</h3>
+        <span><h3 class="text-muted">Joy Sauce</h3> <div id="userNameDisplay"></div></span>
       </div>
 
 
