@@ -1,0 +1,8 @@
+{
+  "name": "project",
+  "description": "joySauce Website",
+  "repository": "https://github.com/navidsarvian/joySauce",
+  "logo": "",
+  "keywords": ["node", "meetups", "express"],
+  "image": ""
+}
