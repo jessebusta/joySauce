@@ -29,10 +29,6 @@ module.exports = function(sequelize, DataTypes) {
       User.hasMany(models.Meetups)
     }
 
-// {as: "createdMeetups", foreignKey: "createdMeetupsId"}
-
   return User;
-
-
-//create return function for the export, and separate tables into separate files
+  
 };

@@ -7,16 +7,26 @@
 <p>Welcome to your dashboard</p>
 <body>
 <div id="interest-button-div"></div>
-                    <div class="panel-container">
-                        <div class="left-panel">
-                                <div id="additional"></div>
-                        </div>
-                        <div class="right-panel">
-                            <h1>Right Panel Content</h1><br>
-                            <div id="small-pane"></div>
-                        </div>
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="myMeetups col-5 p-4 border border-solid border-info">
+                                    <h1>My Meetups </h1><br>
+                                    <div id="myMeetupsItems"></div>
+                                </div>
+
+                                <div class="joinedMeetups col-5 offset-2 p-4 border border-solid border-info">
+                                    <h1> Joined Meetups </h1><br>
+                                    <div id="joinedMeetupsItems"></div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                    <h1>Meetup Info</h1>
+                                    <div class="meetupInfo col-12 p-4 border border-solid border-info my-5">
+
+                            </div>
                     </div>
-                    <button class="btn btn-info text-white" type="Submit" value='Post'><a href='/createmeet'>Meet up</a></button>
 
     <script src="/js/frontend.js"></script>
+    <script src="/js/meetupsInfo.js"></script>
 </body>

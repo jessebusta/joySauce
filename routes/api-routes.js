@@ -12,14 +12,24 @@ module.exports = function(app) {
   });
 
 
-  app.get("/api/createdMeetups/:UserId", function(req, res) {
+  app.get("/api/createdMeetups/:username", function(req, res) {
     db.Meetups.findAll({
       where: {
-          createdMeetups: req.params.UserId
+          username: req.params.username
       },
       include: [db.User]
     }).then(function(createdMeetups){
       res.json(createdMeetups);
+    });
+  });
+
+  app.get("/api/meetupInfo/:meetup", function(req, res) {
+    db.Meetups.findOne({
+      where: {
+        title: req.params.meetup
+      }
+    }).then(function(meetupsData){
+      res.json(meetupsData);
     });
   });
 
@@ -43,7 +53,6 @@ module.exports = function(app) {
   app.post("/api/createdMeetups", function(req, res) {
     db.Meetups.create(req.body).then(function(dbMeetup){
       res.json(dbMeetup);
-      res.redirect('/dashboard');
     })
   });
 

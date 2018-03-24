@@ -22,14 +22,6 @@ module.exports = function (sequelize, DataTypes){
     }
   });
 
-  // Meetups.associate = function(models) {
-  //   Meetups.belongsToMany(models.User, {as: "joinedMeetups", through: "myMeetups", foreignKey: "joinedMeetupsID"});
-  // }
-  //
-  // Meetups.associate = function(models) {
-  //   Meetups.hasMany(models.interests, {as: "meetupInterests", foreignKey: "meetupInterestsId"})
-  // }
-
   Meetups.associate = function(models) {
     Meetups.belongsTo(models.Interests)
   };

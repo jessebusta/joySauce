@@ -11,7 +11,7 @@ function getInterests() {
     for (var i = 0; i < data.length; i++) {
       interestsArray.push(data[i].Interests_name)
     }
-    console.log(interestsArray);
+    console.log('this is the interest array' + interestsArray);
     var profileArray = ['test', 'data', 'profile'];
     var postArray = ['post', 'test', 'content'];
     function createInterestButtons() {
@@ -39,35 +39,40 @@ function displayUserNameDash() {
 }
 
 displayUserNameDash();
+//
 
 
+function getMyMeetups() {
+   var url = '/api/createdMeetups/' + userObject.username;
+   console.log(url);
+   var myMeetupsArray = [];
 
+   $.get(url, function(data){
+     for (var i = 0; i < data.length; i++) {
+       myMeetupsArray.push(data[i].title)
+       console.log(data[i].title);
+     };
+      myMeetupsList();
+   });
 
+   console.log('this is mymeetups array ' + myMeetupsArray);
 
-// createInterestButtons();
-// function createProfileInfo() {
-//     $("#additional").empty();
-//     for (let j = 0; j < profileArray.length; j++) {
-//         var profilePane = $("<div>");
-//         profilePane.addClass('profile-info');
-//         profilePane.attr('data-profile', profileArray[j]);
-//         profilePane.text(profileArray[j]);
-//         $("#additional").append(profilePane);
-//     }
-// };
-// createProfileInfo();
-// function displayPostInfo() {
-//     $('#small-pane').empty();
-//     for (let i = 0; i < postArray.length; i++) {
-//         var postPane = $("<div>");
-//         postPane.addClass('post-info');
-//         postPane.attr('data-post', postArray[i]);
-//         postPane.text(postArray[i]);
-//         $('#small-pane').append(postPane);
-//     }
-// }
-// displayPostInfo();
-// var email = "joysauce@gmail.com";
-// var username = "Joy Sauce Project Contributors";
-// $(".username").text(username);
-// $(".email").text(email);
+   function myMeetupsList() {
+       $("#myMeetupsItems").empty();
+       var myMeetupsUL = $("<ul>");
+       for (let i = 0; i < myMeetupsArray.length; i++) {
+           var myMeetupsLI = $("<li>");
+           var myMeetupsButton = $("<button>");
+           myMeetupsButton.addClass('meetups-button m-2 btn btn-info');
+           myMeetupsButton.attr('id', 'meetID'+i);
+           myMeetupsButton.attr('data-Meetups', myMeetupsArray[i]);
+           myMeetupsButton.text(myMeetupsArray[i]);
+           myMeetupsLI.append(myMeetupsButton);
+           myMeetupsUL.append(myMeetupsLI);
+           $("#myMeetupsItems").append(myMeetupsUL);
+       }
+     };
+     console.log("this is the end!");
+}
+
+getMyMeetups();
