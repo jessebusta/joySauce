@@ -23,6 +23,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/createdMeetups/", function(req, res) {
+    db.Meetups.findAll().then(function(createdMeetups){
+      res.json(createdMeetups);
+    });
+  });
+
   app.get("/api/meetupInfo/:meetup", function(req, res) {
     db.Meetups.findOne({
       where: {
